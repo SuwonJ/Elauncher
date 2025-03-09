@@ -228,7 +228,7 @@ class HomeFragment :
             }
         }
         quickButtonPreferencesRepo.observe { prefs ->
-            //설정
+            // 설정
             val leftButtonIcon = getIconResourceId(prefs.leftButton.iconId)
             val homeFragmentCall = view?.findViewById<ImageView>(R.id.home_fragment_call)
             homeFragmentCall?.setImageResource(leftButtonIcon!!)
@@ -239,7 +239,7 @@ class HomeFragment :
                     )
                 )
             }
-            //앱 리스트
+            // 앱 리스트
             val centerButtonIcon = getIconResourceId(prefs.centerButton.iconId)
             val homeFragmentOptions = view?.findViewById<ImageView>(R.id.home_fragment_options)
             homeFragmentOptions?.setImageResource(centerButtonIcon!!)
@@ -253,7 +253,7 @@ class HomeFragment :
                     }
                 }
             }
-            //KOreader
+            // KOreader
             val rightButtonIcon = getIconResourceId(prefs.rightButton.iconId)
             val homeFragmentCamera = view?.findViewById<ImageView>(R.id.home_fragment_camera)
             homeFragmentCamera?.setImageResource(rightButtonIcon!!)

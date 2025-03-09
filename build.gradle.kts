@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.7.3")
+        classpath("com.android.tools.build:gradle:8.8.0")
         // This needs to match kotlin-stdlib
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.54")

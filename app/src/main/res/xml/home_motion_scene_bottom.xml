@@ -2,242 +2,46 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
+    <!--
     <Transition
         motion:constraintSetEnd="@+id/home_motion_02"
         motion:constraintSetStart="@+id/home_motion_01"
-        motion:duration="250">
-        <OnSwipe
-            motion:dragDirection="dragUp"
-            motion:touchAnchorId="@+id/home_fragment_list"
-            motion:touchAnchorSide="bottom" />
-    </Transition>
+        motion:duration="0">
+                <OnSwipe
+                    motion:dragDirection="dragUp"
+                    motion:touchAnchorId="@+id/home_fragment_list"
+                    motion:touchAnchorSide="bottom" />
+            </Transition>
+    -->
+            <ConstraintSet android:id="@+id/home_motion_01">
+                <Constraint
+                    android:id="@+id/home_fragment_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_sides"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:layout_marginEnd="@dimen/margin_sides"
+                    app:layout_constraintBottom_toTopOf="@+id/home_fragment_list_exp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/home_fragment_date"
+                    android:visibility="visible"
+                    android:alpha="1" />
+            </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/home_motion_01">
-        <Constraint
-            android:id="@+id/home_fragment_analog_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_22sdp"
-            app:visibilityMode="ignore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-        <Constraint
-            android:id="@+id/home_fragment_bin_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_large"
-            android:padding="@dimen/_4sdp"
-            app:visibilityMode="ignore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_fragment_analog_time"/>
-        <Constraint
-            android:id="@+id/home_fragment_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_large"
-            app:visibilityMode="ignore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_fragment_bin_time" />
-        <Constraint
-            android:id="@+id/home_fragment_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding"
-            android:textSize="@dimen/font_size_home_date"
-            android:layout_marginTop="@dimen/_94sdp"
-            app:visibilityMode="ignore"
-            app:layout_constraintEnd_toEndOf="@+id/home_fragment_time"
-            app:layout_constraintStart_toStartOf="@+id/home_fragment_time"
-            app:layout_constraintTop_toTopOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_list"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides"
-            android:layout_marginTop="@dimen/margin_top"
-            android:layout_marginEnd="@dimen/margin_sides"
-            app:layout_constraintBottom_toTopOf="@+id/home_fragment_list_exp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_fragment_date"
-            app:layout_constraintVertical_bias="0.3"
-            app:layout_constraintVertical_chainStyle="packed" />
-        <Constraint
-            android:id="@+id/home_fragment_list_exp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides"
-            android:layout_marginEnd="@dimen/margin_sides"
-            android:layout_marginBottom="@dimen/margin_bottom"
-            app:layout_constraintBottom_toBottomOf="@+id/home_fragment_options"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_fragment_list" />
-        <Constraint
-            android:id="@+id/home_fragment_options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_bottom_small"
-            android:alpha="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/home_fragment_camera"
-            app:layout_constraintStart_toEndOf="@+id/home_fragment_call" />
-        <Constraint
-            android:id="@+id/home_fragment_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides_small"
-            android:layout_marginBottom="@dimen/margin_bottom_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_sides_small"
-            android:layout_marginBottom="@dimen/margin_bottom_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-        <Constraint
-            android:id="@+id/app_drawer_edit_text"
-            android:padding="@dimen/padding"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides"
-            android:layout_marginTop="@dimen/margin_top_small"
-            android:layout_marginEnd="@dimen/margin_sides"
-            app:visibilityMode="ignore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_drawer_fragment_list" />
-        <Constraint
-            android:id="@+id/app_drawer_fragment_list"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_sides_small"
-            android:layout_marginEnd="@dimen/margin_sides_small"
-            android:alpha="-1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-    </ConstraintSet>
-
-    <ConstraintSet android:id="@+id/home_motion_02">
-        <Constraint
-            android:id="@+id/home_fragment_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_large"
-            android:alpha="-1"
-            app:visibilityMode="ignore"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_analog_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0px"
-            android:alpha="-1"
-            app:visibilityMode="ignore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_bin_time"
-            android:layout_width="wrap_content"
-            android:layout_height="0px"
-            android:layout_marginTop="0px"
-            android:alpha="-1"
-            app:visibilityMode="ignore"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="-1"
-            app:visibilityMode="ignore"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/home_fragment_time"
-            app:layout_constraintStart_toStartOf="@+id/home_fragment_time" />
-        <Constraint
-            android:id="@+id/home_fragment_list"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides"
-            android:layout_marginEnd="@dimen/margin_sides"
-            android:alpha="-1"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_list_exp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides"
-            android:layout_marginEnd="@dimen/margin_sides"
-            android:layout_marginBottom="@dimen/margin_bottom_small"
-            android:alpha="-1"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="-3"
-            app:layout_constraintTop_toBottomOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides_small"
-            android:alpha="-1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-        <Constraint
-            android:id="@+id/home_fragment_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_sides_small"
-            android:alpha="-1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-        <Constraint
-            android:id="@+id/app_drawer_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_sides_small"
-            android:layout_marginTop="@dimen/margin_top_small"
-            android:layout_marginEnd="@dimen/margin_sides_small"
-            app:visibilityMode="ignore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-        <Constraint
-            android:id="@+id/app_drawer_fragment_list"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_sides_small"
-            android:layout_marginEnd="@dimen/margin_sides_small"
-            app:layout_constraintBottom_toTopOf="@id/app_drawer_edit_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </ConstraintSet>
-</MotionScene>
+            <ConstraintSet android:id="@+id/home_motion_02">
+                <Constraint
+                    android:id="@+id/home_fragment_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_sides"
+                    android:layout_marginTop="@dimen/margin_top"
+                    android:layout_marginEnd="@dimen/margin_sides"
+                    app:layout_constraintBottom_toTopOf="@+id/home_fragment_list_exp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/home_fragment_date"
+                    android:visibility="visible"
+                    android:alpha="1" />
+            </ConstraintSet>
+        </MotionScene>

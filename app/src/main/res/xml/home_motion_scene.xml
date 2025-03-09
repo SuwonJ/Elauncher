@@ -5,12 +5,14 @@
     <Transition
         motion:constraintSetEnd="@+id/home_motion_02"
         motion:constraintSetStart="@+id/home_motion_01"
-        motion:duration="250">
+        motion:duration="0">
+        <!--
         <OnSwipe
             motion:dragDirection="dragUp"
             motion:touchAnchorId="@+id/home_fragment_list"
             motion:touchAnchorSide="bottom" />
-    </Transition>
+    -->
+</Transition>
 
     <ConstraintSet android:id="@+id/home_motion_01">
         <Constraint

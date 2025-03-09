@@ -43,7 +43,7 @@
         android:padding="@dimen/padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_call" />
+        app:srcCompat="@drawable/ic_cog" />
 
     <ImageView
         android:id="@+id/quick_button_center"
@@ -52,12 +52,12 @@
         android:layout_margin="@dimen/margin_sides_small"
         android:alpha="1"
         android:background="@drawable/imageview_border"
-        android:contentDescription="@string/quick_buttons_description_center"
+        android:contentDescription="@string/open_app_drawer_description"
         android:padding="@dimen/padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/quick_button_right"
-        app:layout_constraintStart_toEndOf="@+id/quick_button_left"
-        app:srcCompat="@drawable/ic_cog" />
+        app:layout_constraintStart_toEndOf="@+id/quick_button_left" />
+
 
     <ImageView
         android:id="@+id/quick_button_right"
@@ -69,6 +69,6 @@
         android:padding="@dimen/padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_photo_camera" />
+        app:srcCompat="@drawable/outline_book_ribbon_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

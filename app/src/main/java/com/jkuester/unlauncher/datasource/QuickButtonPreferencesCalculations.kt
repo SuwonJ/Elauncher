@@ -31,9 +31,9 @@ fun setRightIconId(iconId: Int) = { currentPreferences: QuickButtonPreferences -
 
 enum class QuickButtonIcon(val prefId: Int, val resourceId: Int) {
     IC_EMPTY(1, R.drawable.ic_empty),
-    IC_CALL(2, R.drawable.ic_call),
-    IC_COG(3, R.drawable.ic_cog),
-    IC_PHOTO_CAMERA(4, R.drawable.ic_photo_camera)
+    IC_CALL(2, R.drawable.ic_cog),
+    IC_COG(3, R.drawable.rounded_apps_24),
+    IC_PHOTO_CAMERA(4, R.drawable.outline_book_ribbon_24)
 }
 
 fun getIconResourceId(prefId: Int) = QuickButtonIcon.entries

@@ -14,7 +14,6 @@ import android.os.Bundle
 import android.os.UserManager
 import android.provider.AlarmClock
 import android.provider.CalendarContract
-import android.provider.MediaStore
 import android.provider.Settings
 import android.text.format.DateFormat
 import android.view.LayoutInflater
@@ -24,6 +23,7 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -212,14 +212,12 @@ class HomeFragment :
                 launchActivity(it, intent)
             } catch (e: ActivityNotFoundException) {
                 e.printStackTrace()
-                // Do nothing, we've failed :(
             }
         }
         val homeFragmentContent = HomeFragmentContentBinding.bind(requireView())
         homeFragmentContent.homeFragmentTime.setOnClickListener(launchShowAlarms)
         homeFragmentContent.homeFragmentAnalogTime.setOnClickListener(launchShowAlarms)
         homeFragmentContent.homeFragmentBinTime.setOnClickListener(launchShowAlarms)
-
         homeFragmentContent.homeFragmentDate.setOnClickListener {
             try {
                 val builder = CalendarContract.CONTENT_URI.buildUpon().appendPath("time")
@@ -227,56 +225,53 @@ class HomeFragment :
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 launchActivity(it, intent)
             } catch (e: ActivityNotFoundException) {
-                // Do nothing, we've failed :(
             }
         }
-
         quickButtonPreferencesRepo.observe { prefs ->
+            //설정
             val leftButtonIcon = getIconResourceId(prefs.leftButton.iconId)
-            homeFragmentContent.homeFragmentCall.setImageResource(leftButtonIcon!!)
+            val homeFragmentCall = view?.findViewById<ImageView>(R.id.home_fragment_call)
+            homeFragmentCall?.setImageResource(leftButtonIcon!!)
             if (leftButtonIcon != R.drawable.ic_empty) {
-                homeFragmentContent.homeFragmentCall.setOnClickListener { view ->
-                    try {
-                        val pm = context?.packageManager!!
-                        val intent = Intent(Intent.ACTION_DIAL)
-                        val componentName = intent.resolveActivity(pm)
-                        if (componentName == null) {
-                            launchActivity(view, intent)
-                        } else {
-                            pm.getLaunchIntentForPackage(componentName.packageName)?.let {
-                                launchActivity(view, it)
-                            } ?: run { launchActivity(view, intent) }
-                        }
-                    } catch (e: Exception) {
-                        // Do nothing
-                    }
-                }
-            }
-
-            val centerButtonIcon = getIconResourceId(prefs.centerButton.iconId)
-            homeFragmentContent.homeFragmentOptions.setImageResource(centerButtonIcon!!)
-            if (centerButtonIcon != R.drawable.ic_empty) {
-                homeFragmentContent.homeFragmentOptions.setOnClickListener(
+                homeFragmentCall?.setOnClickListener(
                     Navigation.createNavigateOnClickListener(
                         R.id.action_homeFragment_to_optionsFragment
                     )
                 )
             }
-
-            val rightButtonIcon = getIconResourceId(prefs.rightButton.iconId)
-            homeFragmentContent.homeFragmentCamera.setImageResource(rightButtonIcon!!)
-            if (rightButtonIcon != R.drawable.ic_empty) {
-                homeFragmentContent.homeFragmentCamera.setOnClickListener {
+            //앱 리스트
+            val centerButtonIcon = getIconResourceId(prefs.centerButton.iconId)
+            val homeFragmentOptions = view?.findViewById<ImageView>(R.id.home_fragment_options)
+            homeFragmentOptions?.setImageResource(centerButtonIcon!!)
+            if (centerButtonIcon != R.drawable.ic_empty) {
+                homeFragmentOptions?.setOnClickListener { view ->
                     try {
-                        val intent = Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA)
-                        launchActivity(it, intent)
+                        val motionLayout = view.rootView.findViewById<MotionLayout>(R.id.home_fragment)
+                        motionLayout?.transitionToState(R.id.home_motion_02) // 앱 리스트 상태로 전환
                     } catch (e: Exception) {
-                        // Do nothing
+                        e.printStackTrace()
+                    }
+                }
+            }
+            //KOreader
+            val rightButtonIcon = getIconResourceId(prefs.rightButton.iconId)
+            val homeFragmentCamera = view?.findViewById<ImageView>(R.id.home_fragment_camera)
+            homeFragmentCamera?.setImageResource(rightButtonIcon!!)
+            if (rightButtonIcon != R.drawable.ic_empty) {
+                homeFragmentCamera?.setOnClickListener {
+                    try {
+                        val koreaderIntent = context?.packageManager?.getLaunchIntentForPackage("org.koreader.launcher")
+                        if (koreaderIntent != null) {
+                            startActivity(koreaderIntent)
+                        } else {
+                            Toast.makeText(context, "KOreader is not installed", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
             }
         }
-
         homeFragmentContent.appDrawerEditText.addTextChangedListener(
             appDrawerAdapter.searchBoxListener
         )

@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding"
-        app:srcCompat="@drawable/ic_call"
+        app:srcCompat="@drawable/ic_cog"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding"
-        app:srcCompat="@drawable/ic_photo_camera"
+        app:srcCompat="@drawable/outline_book_ribbon_24"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding"
-        app:srcCompat="@drawable/ic_cog"
+        app:srcCompat="@drawable/rounded_apps_24"
         tools:ignore="ContentDescription" />
 
     <com.sduduzog.slimlauncher.ui.main.BinaryClockView
